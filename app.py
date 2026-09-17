@@ -1,26 +1,47 @@
-student_name = "TONY STARK"
-register_no = "AV_01"
+def generate_report():
+    students = [
+        ("101", "Rahul", 85),
+        ("102", "Priya", 92),
+        ("103", "Arun", 78),
+        ("104", "Sneha", 88),
+        ("105", "Kiran", 95)
+    ]
 
-total_questions = 10
-correct_answers = 8
-wrong_answers = 2
+    total_students = len(students)
+    total_marks = sum(s[2] for s in students)
+    average_marks = total_marks / total_students
 
-marks = correct_answers * 10
+    with open("report.txt", "w") as f:
+        f.write("ONLINE EXAMINATION SYSTEM REPORT\n")
+        f.write("================================\n\n")
 
-if marks >= 40:
-    result = "PASS"
-else:
-    result = "FAIL"
+        f.write("Examination: Python Programming Test\n")
+        f.write("Total Students: " + str(total_students) + "\n")
+        f.write("Average Marks: " + str(round(average_marks, 2)) + "\n\n")
 
-with open("result.txt", "w") as f:
-    f.write("ONLINE EXAMINATION RESULT\n")
-    f.write("=========================\n")
-    f.write(f"Student Name: {student_name}\n")
-    f.write(f"Register Number: {register_no}\n")
-    f.write(f"Total Questions: {total_questions}\n")
-    f.write(f"Correct Answers: {correct_answers}\n")
-    f.write(f"Wrong Answers: {wrong_answers}\n")
-    f.write(f"Marks: {marks}/100\n")
-    f.write(f"Result: {result}\n")
+        f.write("STUDENT RESULTS\n")
+        f.write("----------------\n")
 
-print("Result report generated.")
+        for student_id, name, marks in students:
+            if marks >= 90:
+                result = "Excellent"
+            elif marks >= 75:
+                result = "Pass"
+            else:
+                result = "Pass"
+
+            f.write(
+                "ID: " + student_id +
+                " | Name: " + name +
+                " | Marks: " + str(marks) +
+                " | Result: " + result + "\n"
+            )
+
+        f.write("\nReport generated successfully by Jenkins.\n")
+
+    print("Result report generated.")
+    print("report.txt created successfully.")
+
+
+if __name__ == "__main__":
+    generate_report()
