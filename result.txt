@@ -1,9 +1,0 @@
-ONLINE EXAMINATION RESULT
-=========================
-Student Name: TONY STARK
-Register Number: AV_01
-Total Questions: 10
-Correct Answers: 8
-Wrong Answers: 2
-Marks: 80/100
-Result: PASS
